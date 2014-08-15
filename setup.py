@@ -10,8 +10,8 @@ setup(
     url='http://pypi.python.org/pypi/TwStats/',
     license='LICENSE',
     description='Gathering Twitter statistics',
-    long_description=open('README.md').read(),
+    long_description=open('README.txt').read(),
     install_requires=[
-        'python-twitter == 1.1',
+        'twython >= 3.1.2',
     ],
 )
