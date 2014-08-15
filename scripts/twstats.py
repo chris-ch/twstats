@@ -25,7 +25,6 @@ def init_app():
     api_secret = config.get('Twitter App', 'API_SECRET') 
 
     if not os.path.isfile(__TOKEN_PATH) or not os.access(__TOKEN_PATH, os.R_OK):
-        twitter = Twython(APP_KEY, access_token=token)
         twitter = Twython(api_key, api_secret, oauth_version=2)
         token = twitter.obtain_access_token()
       
@@ -41,9 +40,9 @@ def init_app():
 
 if __name__ == '__main__':
     twitter = init_app()
-    keyword = 'python'
-    since_date = '2014-02-01'
-    until_date = '2014-02-28'
+    keyword = 'opel'
+    since_date = '2014-08-10'
+    until_date = '2014-08-11'
     since = 'since:' + since_date
     until = 'until:' + until_date
     query = ' '.join([keyword, since, until])
