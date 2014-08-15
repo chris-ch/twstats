@@ -6,7 +6,7 @@ setup(
     author='Christophe Alexandre',
     author_email='chris.perso@gmail.com',
     packages=['twstats', 'twstats.test'],
-    scripts=['bin/twstats.py',],
+    scripts=['scripts/twstats.py',],
     url='http://pypi.python.org/pypi/TwStats/',
     license='LICENSE',
     description='Gathering Twitter statistics',
