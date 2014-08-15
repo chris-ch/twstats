@@ -26,18 +26,37 @@ def init_app():
 
     if not os.path.isfile(__TOKEN_PATH) or not os.access(__TOKEN_PATH, os.R_OK):
         twitter = Twython(APP_KEY, access_token=token)
-	
-    twitter = Twython(api_key, api_secret, oauth_version=2)
-    token = twitter.obtain_access_token()
-    
-    with open(__TOKEN_PATH, 'wb') as token_file:
-        token_file.write(token)
+        twitter = Twython(api_key, api_secret, oauth_version=2)
+        token = twitter.obtain_access_token()
+      
+        with open(__TOKEN_PATH, 'wb') as token_file:
+            token_file.write(token)
+
+    else:
+        with open(__TOKEN_PATH, 'r') as token_file:
+            token = token_file.read().replace('\n', '')
 
     twitter = Twython(api_key, access_token=token)
     return twitter
 
 if __name__ == '__main__':
     twitter = init_app()
-    results = twitter.search(q='python')
-    print results
+    keyword = 'python'
+    since_date = '2014-02-01'
+    until_date = '2014-02-28'
+    since = 'since:' + since_date
+    until = 'until:' + until_date
+    query = ' '.join([keyword, since, until])
+    print query
+    results = twitter.search(
+        q=query,
+	#result_type='recent',
+	)
+    print '-----------------------------'
+    print results['search_metadata']
+    print '-----------------------------'
+    for result in results['statuses']:
+	print
+        print result['created_at']
+        print result['text']
 
