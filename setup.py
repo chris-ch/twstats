@@ -1,4 +1,4 @@
-from distutils.core import setup
+from setuptools import setup
 
 setup(
     name='TwStats',
@@ -12,6 +12,6 @@ setup(
     description='Gathering Twitter statistics',
     long_description=open('README.txt').read(),
     install_requires=[
-        'twython >= 3.1.2',
+        'twython>=3.1.2',
     ],
 )
